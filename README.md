@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <strong>Arus! Download Manager</strong> adalah aplikasi manajer unduhan native untuk Windows (64-bit) yang menggabungkan akselerasi HTTP/HTTPS multi-segmen, dekripsi cloud native, pengunduh video/audio &amp; galeri 65+ platform, konverter media offline, klien BitTorrent/Magnet, serta integrasi ekstensi browser resmi untuk ekosistem <strong>Chromium</strong> maupun <strong>Firefox</strong> dalam satu paket instalasi mandiri.
+  <strong>Arus! Download Manager</strong> adalah aplikasi manajer unduhan native untuk Windows (64-bit) yang menggabungkan akselerasi HTTP/HTTPS multi-segmen, dekripsi cloud native, pengunduh video/audio &amp; galeri 65+ platform, konverter media offline, transfer QR Wi-Fi lokal ke ponsel, klien BitTorrent/Magnet, serta integrasi ekstensi browser resmi untuk ekosistem <strong>Chromium</strong> maupun <strong>Firefox</strong> dalam satu paket instalasi mandiri.
 </p>
 
 <p align="center">
@@ -57,45 +57,44 @@ Antarmuka mendukung tema terang (*Light Mode*) dan gelap (*Dark Mode*), pilihan 
 
 ## Kemampuan Utama
 
-### 1. Mesin Unduhan, Dekripsi Cloud, & Reliabilitas Jaringan
+### 1. Mesin Unduhan, Multi-Mirror, & Dekripsi Cloud
 
 | Kemampuan | Penjelasan |
 |---|---|
 | **Akselerasi Multi-Segmen Dinamis** | Memecah unduhan HTTP/HTTPS hingga 16 koneksi paralel dengan algoritma *dynamic work-stealing* (segmen yang selesai lebih awal otomatis membantu membelah sisa segmen terberat) serta grafik laju transfer *real-time*. |
+| **Multi-Mirror Booster** | Menarik satu berkas besar dari beberapa tautan server cadangan (*mirror*) secara paralel dengan verifikasi ukuran `Content-Range` dan pengalihan (*failover*) otomatis apabila salah satu server melambat atau gagal. |
 | **Dekripsi Native MEGA.nz & Smart Cloud** | Mendukung dekripsi `AES-128-CTR` multi-segmen bawaan untuk berkas dan folder publik **MEGA.nz**, serta ekstraksi tautan langsung otomatis untuk **Google Drive** (termasuk berkas >100 MB), **MediaFire**, **OneDrive (`1drv.ms`)**, **WeTransfer (`we.tl`)**, **Dropbox**, **Pixeldrain**, **GoFile**, **Buzzheavier**, **KrakenFiles**, **Workupload**, **Internet Archive**, **Hugging Face**, **GitHub Releases**, **SourceForge**, **Wikimedia**, dan **arXiv**. |
-| **Pemulihan Koneksi & Anti-Sleep** | Mendeteksi koneksi macet (*stall recovery*), melanjutkan unduhan otomatis saat jaringan kembali tersambung dari gangguan Wi-Fi/ISP, dan mencegah Windows masuk ke mode *Sleep* selama ada unduhan aktif. |
-| **Pembaruan Tautan Kedaluwarsa** | Melanjutkan unduhan berukuran besar yang terhenti akibat tautan sementara kedaluwarsa (`HTTP 403` / `410`) cukup dengan memperbarui alamat unduhan tanpa mengulang progres dari awal. |
-| **Mode Hemat Bandwidth & Kuota Harian** | Sakelar satu klik pada bilah status dan *System Tray* untuk membatasi pemakaian bandwidth saat rapat daring atau bermain gim, dilengkapi pembatas **Kuota Data Harian (GB/hari)** otomatis. |
-| **BitTorrent, Magnet, & Pilih Berkas** | Mendukung berkas `.torrent` dan tautan `magnet:?` lengkap dengan **pemilihan berkas spesifik di dalam torrent**, pengambilan metadata daftar berkas Magnet dari jaringan DHT/peer, pengaturan batas unggah/durasi *seeding*, serta dukungan Proxy Sistem, `HTTP`, dan `SOCKS5` dengan enkripsi kredensial Windows DPAPI. |
+| **Pemulihan Koneksi & Tautan Kedaluwarsa** | Mendeteksi koneksi macet (*stall recovery*), melanjutkan otomatis saat jaringan tersambung kembali, mencegah Windows *Sleep* saat mengunduh, serta memperbarui alamat tautan kedaluwarsa (`HTTP 403` / `410`) tanpa mengulang dari 0%. |
+| **Mode Hemat Bandwidth (`🐢 Saver`)** | Sakelar satu klik langsung di dalam **jendela progres unduhan**, bilah status utama, maupun *System Tray* untuk menahan pemakaian bandwidth seketika saat rapat daring atau bermain gim, dilengkapi pembatas **Kuota Data Harian (GB/hari)**. |
+| **BitTorrent, Magnet, & Pilih Berkas** | Mendukung berkas `.torrent` dan tautan `magnet:?` lengkap dengan **pemilihan berkas spesifik di dalam torrent**, pengambilan metadata daftar berkas dari jaringan DHT/peer, pengaturan batas unggah/*seeding*, serta dukungan Proxy (`HTTP` / `SOCKS5` dengan enkripsi DPAPI). |
 
-### 2. Pengunduh Video, Audio, Galeri 65+ Platform, & Konversi Media
+### 2. Video, Audio, Galeri 65+ Platform, & Alat Kreator
 
 | Kemampuan | Penjelasan |
 |---|---|
 | **65+ Platform Sosial, Video, & Kreator** | Mengunduh video hingga 4K, *playlist*, audio, serta galeri foto/*carousel* resolusi asli dari **YouTube**, **TikTok** (video & *slideshow* `/photo/`), **Instagram** (Reels, Carousel campuran video+foto, Stories), **X/Twitter**, **Facebook**, **Threads**, **Pinterest**, **Telegram**, **Reddit**, **LinkedIn**, **Bluesky**, **Snapchat**, **Tumblr**, **Bilibili/Bstation**, **Vimeo**, **Twitch**, **Kick**, **Pixiv**, **DeviantArt**, **ArtStation**, **Behance**, **Dribbble**, **SoundCloud**, **Bandcamp**, **Suno**, **Udio**, **Civitai**, dan puluhan lainnya. |
-| **Pengunduh Stream HLS/DASH Otomatis** | Mengenali tautan *streaming* video tersegmen (`.m3u8` dan `.mpd`) lalu menggabungkan seluruh segmen secara otomatis menjadi satu berkas video `.mp4` utuh siap putar. |
-| **Pemotong Klip & YouTube Chapter** | Mengunduh rentang durasi tertentu (`mm:ss` hingga `mm:ss`) atau memilih bab (*chapter*) video YouTube secara langsung sehingga tidak perlu mengunduh keseluruhan berkas video. |
-| **Ekstraksi MP3 320kbps & Thumbnail** | Mengekstrak audio langsung ke format `.mp3` 320kbps lengkap dengan sampul album (*cover art*) dan metadata ID3, serta opsi penyimpanan gambar *thumbnail* resolusi asli. |
-| **Konverter Media Offline Bawaan** | Mengonversi berkas video atau audio yang sudah terunduh menjadi **MP3 320kbps**, **GIF animasi**, atau **MP4 ringkas (H.264)** langsung dari menu klik kanan tanpa koneksi internet. |
+| **Konversi Siap Edit & Tanam Subtitle** | Mengonversi video secara *on-demand* ke **MP4 H.264 Siap Edit** (mulus di Premiere Pro, DaVinci Resolve, & CapCut), **MP4 Hemat WhatsApp**, **MP3 320kbps** (+ *cover art*), **GIF animasi**, serta **menyematkan subtitle (`.srt` / `.vtt`)** ke dalam video secara *lossless* dalam hitungan detik. |
+| **Gabung Gambar Carousel ke 1 PDF (*On-Demand*)** | Menyatukan *slide* gambar komik atau materi edukasi yang selesai diunduh menjadi satu dokumen `.pdf` sesuai rasio asli tiap halaman secara manual (tanpa mengubah atau menghapus berkas gambar asli). |
+| **Stream HLS/DASH, Pemotong Klip, & Chapter** | Menggabungkan tautan *streaming* `.m3u8` / `.mpd` otomatis menjadi `.mp4` utuh, serta mengunduh potongan durasi tertentu (`mm:ss`–`mm:ss`) atau bab (*YouTube Chapters*) pilihan. |
 
-### 3. Manajemen Berkas, Antrean Tenang, & Otomasi
+### 3. Transfer ke Ponsel, Manajemen Berkas, & Otomasi
 
 | Kemampuan | Penjelasan |
 |---|---|
-| **Page Link & Media Grabber (`Ctrl+G`)** | Memindai satu halaman web atau repositori untuk mengekstrak banyak berkas sekaligus (dokumen PDF/Office, arsip, media, maupun galeri gambar beresolusi penuh) lengkap dengan penyaring tipe berkas dan pembuatan subfolder otomatis. |
-| **Antrean Massal Rapi Tanpa Spam Taskbar** | Unduhan multi-slide, *playlist*, *Grab Page*, dan *Batch Add* berjalan tenang di jendela utama tanpa menumpuk jendela progres per item di Taskbar, disertai satu notifikasi ringkas saat seluruh grup selesai. |
-| **Relokasi Saat Penyimpanan Penuh** | Memeriksa sisa ruang penyimpanan sebelum dan selama proses unduh. Ketika partisi tujuan penuh, berkas sementara (`.aruspart`) dapat dipindahkan ke drive lain untuk dilanjutkan tanpa kehilangan progres. |
-| **Ekstraksi Arsip Universal** | Mengekstrak arsip `.zip`, `.rar`, `.7z`, `.tar.gz`, `.tar.xz`, dan `.tgz` secara otomatis saat selesai maupun secara manual ke subfolder terpisah melalui menu klik kanan. |
-| **Aturan Folder Pintar, Panduan (`F1`), & Ganti Nama (`F2`)** | Mengarahkan lokasi penyimpanan otomatis berdasarkan domain atau ekstensi berkas (*Smart Folder Rules*), membuka buku panduan fitur instan dengan `F1`, serta mengganti nama berkas menggunakan `F2`. |
-| **Manajemen Antrean, Penjadwal, & Cadangan** | Mendukung *Force Start*, prioritas antrean, penjadwalan jam mulai/berhenti harian, pola angka (`[01-20]`), opsi *Sleep*/*Shutdown* otomatis setelah selesai, pemantau *clipboard* non-intrusif, widget melayang, dan ekspor/impor cadangan (`.json`). |
+| **Kirim ke HP via QR Wi-Fi Lokal** | Mentransfer berkas yang selesai diunduh langsung ke ponsel Android/iOS melalui jaringan Wi-Fi lokal menggunakan kode QR bawaan—**tanpa memakan kuota internet dan 100% kualitas asli tanpa kompresi**. |
+| **Salin Berkas Instan (`Ctrl+C`)** | Menyalin berkas fisik langsung ke *Clipboard* Windows dari dialog selesai maupun daftar utama sehingga dapat langsung ditempel (`Ctrl+V`) ke WhatsApp Desktop, Telegram, Discord, Word, atau Figma tanpa membuka File Explorer. |
+| **Jendela Progres Grup Terpadu** | Unduhan multi-slide *carousel* dan antrean grup dipantau melalui satu jendela progres gabungan yang rapi lengkap dengan grafik kecepatan dan indikator *Taskbar* tanpa membanjiri layar dengan *pop-up*. |
+| **Page Link & Media Grabber (`Ctrl+G`)** | Memindai satu halaman web, folder publik **MEGA.nz**, **GitHub Releases**, **Hugging Face**, atau **Archive.org** untuk memilih dan mengunduh banyak berkas sekaligus. |
+| **Ekstraksi Arsip, Relokasi Disk, & Perapi Riwayat** | Mengekstrak `.zip`, `.rar`, `.7z`, dan `.tar.gz` satu klik, memindahkan berkas sementara (`.aruspart`) lintas partisi saat penyimpanan penuh, serta membersihkan entri riwayat yang berkasnya telah dipindah dari disk dalam satu klik. |
+| **Aturan Folder Pintar, Penjadwal, & Cadangan** | Mengarahkan folder simpan otomatis per domain/ekstensi, menjadwalkan jam antrean harian, opsi *Sleep*/*Shutdown* PC otomatis saat selesai, panduan cepat `F1`, serta ekspor/impor cadangan (`.json`). |
 
 ### 4. Integrasi Browser Lintas Mesin, Keamanan, & Pembaruan
 
 | Kemampuan | Penjelasan |
 |---|---|
-| **Ekstensi Resmi Chrome & Firefox (Manifest V3)** | Tersedia resmi di **[Chrome Web Store](https://chromewebstore.google.com/detail/mdidagnhjbilkgbafhchnghoflbakfmk)** (Chrome, Edge, Brave, Opera, Vivaldi) dan **[Mozilla Add-ons](https://addons.mozilla.org/firefox/addon/arus-download-manager/)** (Firefox, Zen Browser, Floorp, Waterfox, LibreWolf) — dilengkapi intersepsi unduhan otomatis, tombol melayang pintar untuk video & *carousel* campuran (video + gambar), serta klik kanan penembus *overlay* gambar resolusi asli. |
+| **Ekstensi Resmi Chrome & Firefox (Manifest V3)** | Tersedia resmi di **[Chrome Web Store](https://chromewebstore.google.com/detail/mdidagnhjbilkgbafhchnghoflbakfmk)** (Chrome, Edge, Brave, Opera, Vivaldi) dan **[Mozilla Add-ons](https://addons.mozilla.org/firefox/addon/arus-download-manager/)** (Firefox, Zen Browser, Floorp, Waterfox, LibreWolf) — dilengkapi intersepsi unduhan pintar, tombol melayang untuk video & *carousel*, serta klik kanan penembus *overlay* gambar resolusi asli. |
 | **Pemindaian Windows Defender** | Memindai berkas yang selesai diunduh secara otomatis menggunakan mesin **Windows Defender** lokal (termasuk pemeriksaan isi arsip) dan menerapkan penanda keamanan standar Windows (*Mark-of-the-Web*). |
-| **Verifikasi Hash & Pembaruan Aman** | Dilengkapi fitur pencocokan *checksum* `SHA-256` dan `MD5` langsung pada panel inspeksi berkas, serta *Auto-Updater* aplikasi bawaan yang mewajibkan verifikasi integritas `SHA-256` sebelum instalasi. |
+| **Verifikasi Hash & Pembaruan Aman** | Dilengkapi fitur pencocokan *checksum* `SHA-256` dan `MD5` langsung pada aplikasi, serta *Auto-Updater* bawaan yang mewajibkan verifikasi integritas `SHA-256` sebelum instalasi. |
 
 ---
 
@@ -118,3 +117,19 @@ Antarmuka mendukung tema terang (*Light Mode*) dan gelap (*Dark Mode*), pilihan 
 - **Komunikasi Lokal Terisolasi:** Integrasi antara ekstensi browser (`chrome-extension://` maupun `moz-extension://`) dan aplikasi desktop hanya berjalan melalui soket *loopback* lokal (`127.0.0.1`) yang memvalidasi identitas ekstensi dan menolak seluruh permintaan dari situs web eksternal (*anti-CSRF & anti-DNS rebinding*).
 - **Tanpa Pengumpulan Data:** Aplikasi dan ekstensi bekerja sepenuhnya di perangkat lokal pengguna tanpa telemetri, pelacakan riwayat unduhan, iklan, maupun pengiriman data ke server perantara.
 - **Penyimpanan Kredensial Terlindungi:** Kredensial sensitif seperti kata sandi proxy dienkripsi di penyimpanan lokal menggunakan mekanisme *Windows Data Protection API (DPAPI)* khusus akun pengguna aktif.
+
+---
+
+## Dukung Pengembangan
+
+**Arus! Download Manager** dikembangkan secara independen dan dibagikan sepenuhnya **gratis tanpa iklan, tanpa batasan fitur, dan tanpa pelacakan**. Jika aplikasi ini membantu mempercepat pekerjaan harian Anda, dukungan sukarela Anda sangat berarti untuk menjaga pengembangan dan pemeliharaan rilis berikutnya tetap berjalan:
+
+<p align="center">
+  <a href="https://saweria.co/baharida">
+    <img src="https://img.shields.io/badge/Saweria-QRIS%20%2F%20Dukungan%20Lokal-D97706?style=for-the-badge" height="36" alt="Dukung via Saweria (QRIS)" />
+  </a>
+  &nbsp;
+  <a href="https://ko-fi.com/baharida">
+    <img src="https://img.shields.io/badge/Ko--fi-Support%20on%20Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white" height="36" alt="Support on Ko-fi" />
+  </a>
+</p>
